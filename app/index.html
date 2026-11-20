@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Cover Lab — your photos, poster trouble</title>
+<meta name="description" content="An offline web app that turns your photos and a caption into GTA-style cover art: multi-panel layouts, a Vice City sunset grade, poster lettering and PNG export. Your photos never leave your machine.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="brand">
+  <canvas id="brandGhost" width="72" height="76" aria-hidden="true"></canvas>
+  <div class="brand-text">
+    <h1>Leonida Cover Lab</h1>
+    <p class="tagline">Your photos, poster trouble. Sunsets graded, egos inflated.</p>
+  </div>
+  <p class="privacy">Fully offline — photos are read on this machine and never uploaded. The lab has no doors.</p>
+</header>
+
+<main>
+  <section class="stage-wrap">
+    <canvas id="stage" width="980" height="980"></canvas>
+    <p class="hint">Drag a panel to nudge its photo · scroll over a panel to zoom · click a photo, then a panel, to swap it in · double-click a photo to fill every panel.</p>
+  </section>
+
+  <aside class="controls">
+    <section>
+      <h2>Photos</h2>
+      <div id="thumbs" class="thumbs"></div>
+      <label class="file-btn">
+        Add your own photos
+        <input id="photoInput" type="file" accept="image/*" multiple hidden>
+      </label>
+      <div class="row">
+        <button type="button" id="fillAll">Fill all panels</button>
+        <button type="button" id="swapPanel">Swap panel photo</button>
+        <button type="button" id="clearPanel">Clear panel</button>
+      </div>
+      <label class="slider">Panel zoom
+        <input id="zoomRange" type="range" min="1" max="3.5" step="0.01" value="1">
+      </label>
+      <button type="button" id="resetView" class="ghost-btn">Reset panel framing</button>
+    </section>
+
+    <section>
+      <h2>Layout</h2>
+      <div id="layouts" class="chips"></div>
+    </section>
+
+    <section>
+      <h2>Grade</h2>
+      <div id="grades" class="chips"></div>
+      <label class="check"><input id="grainToggle" type="checkbox" checked> Print grain</label>
+      <label class="check"><input id="vignetteToggle" type="checkbox" checked> Vignette</label>
+    </section>
+
+    <section>
+      <h2>Lettering</h2>
+      <label>Title <input id="titleInput" type="text" maxlength="42" value="PALM HEAT"></label>
+      <label>Subtitle <input id="subtitleInput" type="text" maxlength="60" value="wish you were here"></label>
+      <label class="check"><input id="badgeToggle" type="checkbox" checked> Ribbon badge</label>
+      <label>Badge text <input id="badgeText" type="text" maxlength="30" value="Leonida · Est. 2026"></label>
+    </section>
+
+    <section>
+      <h2>Export</h2>
+      <label>Preview size
+        <select id="sizeSelect"></select>
+      </label>
+      <div class="row">
+        <button type="button" class="export" data-export="square">PNG · 1080 × 1080</button>
+        <button type="button" class="export" data-export="portrait">PNG · 1080 × 1350</button>
+        <button type="button" class="export" data-export="wide">PNG · 1920 × 1080</button>
+      </div>
+      <p class="fine">One click, one cover, ready to post. No watermark — the lab signs nothing but the badge.</p>
+    </section>
+  </aside>
+</main>
+
+<footer>
+  <p>Leonida Cover Lab — an original tool for making cover art from your own photos. Not affiliated with any game studio; the sunsets are ours, the photos are yours.</p>
+</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
